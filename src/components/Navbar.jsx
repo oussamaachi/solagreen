@@ -87,7 +87,7 @@ const Navbar = () => {
                             </div>
                         </div>
 
-                        <Link to="/cee" onClick={closeMenus} className={`text-sm font-medium transition-colors hover:text-accent ${scrolled ? 'text-text-light' : 'text-white/80'}`}>Primes C2E</Link>
+                        <Link to="/cee" onClick={closeMenus} className={`text-sm font-medium transition-colors hover:text-accent ${scrolled ? 'text-text-light' : 'text-white/80'}`}>Primes CEE</Link>
                         <Link to="/projets" onClick={closeMenus} className={`text-sm font-medium transition-colors hover:text-accent ${scrolled ? 'text-text-light' : 'text-white/80'}`}>Cas Pratiques</Link>
                         <Link to="/blog" onClick={closeMenus} className={`text-sm font-medium transition-colors hover:text-accent ${scrolled ? 'text-text-light' : 'text-white/80'}`}>Actualités</Link>
 
@@ -151,7 +151,7 @@ const Navbar = () => {
                             </div>
                         </div>
 
-                        <Link to="/cee" onClick={closeMenus} className="text-xl font-heading tracking-wide text-white">Primes C2E / Dossiers</Link>
+                        <Link to="/cee" onClick={closeMenus} className="text-xl font-heading tracking-wide text-white">Primes CEE / Dossiers</Link>
                         <Link to="/projets" onClick={closeMenus} className="text-xl font-heading tracking-wide text-white">Cas Pratiques</Link>
                         <Link to="/blog" onClick={closeMenus} className="text-xl font-heading tracking-wide text-white">Actualités</Link>
                     </nav>

@@ -202,33 +202,44 @@ const Accueil = () => {
 
                         {/* Card 4: GTB / BACS */}
                         <Link to="/solutions" className="solution-card group block relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-accent/30">
-                            <div className="p-6 h-full flex flex-col justify-center">
+                            <div className="h-48 overflow-hidden relative">
+                                <div className="absolute inset-0 bg-primary-dark/20 group-hover:bg-transparent transition-colors z-10"></div>
+                                <img src="/bacs.png" alt="Bureau GTB BACS" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                                 <div className="absolute top-4 right-4 z-20">
-                                    <span className="bg-primary/5 text-primary-dark text-xs font-bold px-3 py-1 rounded-full">Tertiaire</span>
+                                    <span className="bg-white/90 backdrop-blur text-primary-dark text-xs font-bold px-3 py-1 rounded-full border border-white/50">Tertiaire</span>
                                 </div>
+                            </div>
+                            <div className="p-6">
                                 <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center mb-4 text-accent-dim mt-2">
                                     <BarChart3 size={20} />
                                 </div>
                                 <h3 className="font-heading text-2xl text-primary-dark tracking-wide mb-2 group-hover:text-accent-dim transition-colors">Décret BACS & GTB</h3>
-                                <p className="text-text-light text-sm mb-4">Mise en conformité avec pilotage intelligent de vos consommations (Gestion Technique de Bâtiment).</p>
+                                <p className="text-text-light text-sm mb-4 line-clamp-2">Mise en conformité avec pilotage intelligent de vos consommations (Gestion Technique de Bâtiment).</p>
                             </div>
                         </Link>
 
-                        {/* Card 5: Subventions C2E */}
+                        {/* Card 5: Subventions CEE */}
                         <Link to="/cee" className="solution-card group block relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-accent/30">
-                            <div className="p-6 h-full flex flex-col justify-center">
+                            <div className="h-48 overflow-hidden relative">
+                                <div className="absolute inset-0 bg-primary-dark/20 group-hover:bg-transparent transition-colors z-10"></div>
+                                <img src="/cee.png" alt="Primes CEE Montage Dossier" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                                <div className="absolute top-4 right-4 z-20">
+                                    <span className="bg-white/90 backdrop-blur text-primary-dark text-xs font-bold px-3 py-1 rounded-full border border-white/50">Particuliers / Tertiaire</span>
+                                </div>
+                            </div>
+                            <div className="p-6">
                                 <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center mb-4 text-accent-dim mt-2">
                                     <TrendingUp size={20} />
                                 </div>
-                                <h3 className="font-heading text-2xl text-primary-dark tracking-wide mb-2 group-hover:text-accent-dim transition-colors">Montage Dossiers Primes C2E</h3>
-                                <p className="text-text-light text-sm mb-4">Nous optimisons le financement de vos travaux via le dispositif des Certificats d'Économies d'Énergie.</p>
+                                <h3 className="font-heading text-2xl text-primary-dark tracking-wide mb-2 group-hover:text-accent-dim transition-colors">Montage Dossiers Primes CEE</h3>
+                                <p className="text-text-light text-sm mb-4 line-clamp-2">Nous optimisons le financement de vos travaux via le dispositif des Certificats d'Économies d'Énergie.</p>
                             </div>
                         </Link>
                     </div>
                 </div>
             </section>
 
-            {/* 4. Module Accompagnement (Subtil C2E) */}
+            {/* 4. Module Accompagnement (Subtil CEE) */}
             <section className="bg-bg pb-24 w-full">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="bg-bg-alt rounded-3xl p-8 md:p-12 relative overflow-hidden border border-gray-200">
@@ -245,7 +256,7 @@ const Accueil = () => {
                             </div>
                             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative">
                                 <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-accent flex items-center justify-center font-bold text-lg shadow-sm">2</div>
-                                <h4 className="font-bold mb-3 tracking-tight">Dossiers et Primes C2E</h4>
+                                <h4 className="font-bold mb-3 tracking-tight">Dossiers et Primes CEE</h4>
                                 <p className="text-text-light">Nous prenons en charge les demandes d'aides et primes <strong>avant</strong> l'engagement des travaux.</p>
                             </div>
                             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative">

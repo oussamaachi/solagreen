@@ -42,11 +42,11 @@ const Article5 = () => {
                         <div className="grid md:grid-cols-3 gap-4 mt-4">
                             <div>
                                 <h3 className="font-heading text-lg text-primary-dark mb-1">Décret Tertiaire</h3>
-                                <p className="font-sans text-text-light text-sm">-40% de conso d'énergie en 2030 vs 2010. Déclaration OPERAT annuelle obligatoire pour tout bâtiment > 1 000 m².</p>
+                                <p className="font-sans text-text-light text-sm">-40% de conso d'énergie en 2030 vs 2010. Déclaration OPERAT annuelle obligatoire pour tout bâtiment &gt; 1 000 m².</p>
                             </div>
                             <div>
                                 <h3 className="font-heading text-lg text-primary-dark mb-1">Décret BACS</h3>
-                                <p className="font-sans text-text-light text-sm">GTB obligatoire pour les systèmes CVC > 290 kW à partir du 1er janvier 2025. Échéance 2027 pour les systèmes > 70 kW.</p>
+                                <p className="font-sans text-text-light text-sm">GTB obligatoire pour les systèmes CVC &gt; 290 kW à partir du 1er janvier 2025. Échéance 2027 pour les systèmes &gt; 70 kW.</p>
                             </div>
                             <div>
                                 <h3 className="font-heading text-lg text-primary-dark mb-1">CEE P6</h3>
@@ -91,9 +91,9 @@ const Article5 = () => {
                                 </tr>
                             </thead>
                             <tbody className="text-text-light">
-                                <tr className="border-b border-gray-100"><td className="py-2 pr-6">Bâtiments neufs > 290 kW</td><td className="py-2">Depuis janvier 2025</td></tr>
-                                <tr className="border-b border-gray-100"><td className="py-2 pr-6">Bâtiments existants > 290 kW</td><td className="py-2">1er janvier 2025</td></tr>
-                                <tr><td className="py-2 pr-6">Bâtiments existants > 70 kW</td><td className="py-2">1er janvier 2027</td></tr>
+                                <tr className="border-b border-gray-100"><td className="py-2 pr-6">Bâtiments neufs &gt; 290 kW</td><td className="py-2">Depuis janvier 2025</td></tr>
+                                <tr className="border-b border-gray-100"><td className="py-2 pr-6">Bâtiments existants &gt; 290 kW</td><td className="py-2">1er janvier 2025</td></tr>
+                                <tr><td className="py-2 pr-6">Bâtiments existants &gt; 70 kW</td><td className="py-2">1er janvier 2027</td></tr>
                             </tbody>
                         </table>
                     </div>

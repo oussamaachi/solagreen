@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, AlertTriangle, CalendarDays, CheckCircle2, Zap, Building2 } from 'lucide-react';
 import CeeBadge from '../components/CeeBadge';
 

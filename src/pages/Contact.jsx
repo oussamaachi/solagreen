@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { Mail, Clock, ShieldCheck, AlertCircle } from 'lucide-react';
+import { Mail, Clock, ShieldCheck, AlertCircle, ArrowRight } from 'lucide-react';
 
 const Contact = () => {
     const comp = useRef(null);

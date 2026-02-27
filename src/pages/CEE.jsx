@@ -1,12 +1,12 @@
-import React, { useLayoutEffect, useRef, useState, useEffect } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { CheckCircle2, ChevronRight, Calculator, RefreshCw, AlertTriangle, ShieldAlert } from 'lucide-react';
-import CeeBadge from '../components/CeeBadge';
+import { ChevronRight, Calculator, RefreshCw, AlertTriangle, ShieldAlert } from 'lucide-react';
 
 const CEE = () => {
     const comp = useRef(null);
+    const calcTimeoutRef = useRef(null);
+    const resultAnimTimeoutRef = useRef(null);
 
     // --- Calculator State ---
     const [step, setStep] = useState(1);
@@ -43,15 +43,30 @@ const CEE = () => {
             });
 
         }, comp);
-        return () => ctx.revert();
+        return () => {
+            ctx.revert();
+            if (calcTimeoutRef.current) {
+                clearTimeout(calcTimeoutRef.current);
+            }
+            if (resultAnimTimeoutRef.current) {
+                clearTimeout(resultAnimTimeoutRef.current);
+            }
+        };
     }, []);
 
     // --- Calculator Logic ---
     const handleCalculate = () => {
         setIsCalculating(true);
 
+        if (calcTimeoutRef.current) {
+            clearTimeout(calcTimeoutRef.current);
+        }
+        if (resultAnimTimeoutRef.current) {
+            clearTimeout(resultAnimTimeoutRef.current);
+        }
+
         // Simulate calculation time
-        setTimeout(() => {
+        calcTimeoutRef.current = setTimeout(() => {
             const calculCEE = {
                 solaire: { primeCEEratio: 0.12, economiesRatio: 0.35, roi: "7-12" },
                 led: { primeCEEratio: 0.08, economiesRatio: 0.15, roi: "2-4" },
@@ -82,7 +97,7 @@ const CEE = () => {
             setStep(6); // Go to results
 
             // Animate results
-            setTimeout(() => {
+            resultAnimTimeoutRef.current = setTimeout(() => {
                 gsap.from('.result-row', { x: -20, opacity: 0, stagger: 0.1, duration: 0.5 });
             }, 100);
 

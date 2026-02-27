@@ -72,7 +72,7 @@ const APropos = () => {
                             </div>
                             <div className="flex justify-between items-end border-b border-gray-100 border-dashed pb-2">
                                 <span>CEE P6 — Enveloppe financière 2026</span>
-                                <span className="font-bold">> 8 milliards €</span>
+                                <span className="font-bold">&gt; 8 milliards €</span>
                             </div>
                             <div className="flex justify-between items-end border-b border-gray-100 border-dashed pb-2">
                                 <span>Bâtiments tertiaires : consommation</span>

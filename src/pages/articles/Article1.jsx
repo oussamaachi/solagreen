@@ -74,13 +74,13 @@ const Article1 = () => {
                         </div>
                         <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
                             <h3 className="font-heading text-xl text-primary-dark mb-3">🏪 Grande distribution</h3>
-                            <p className="font-sans text-text-light text-sm leading-relaxed">Les grandes surfaces alimentaires sont ciblées par les fiches frigorifiques (IND-UT-134) et éclairage LED. L'obligation de solarisation des parkings >10 000 m² (Loi APER) crée un levier d'autoconsommation couplable aux CEE.</p>
+                            <p className="font-sans text-text-light text-sm leading-relaxed">Les grandes surfaces alimentaires sont ciblées par les fiches frigorifiques (IND-UT-134) et éclairage LED. L'obligation de solarisation des parkings &gt;10 000 m² (Loi APER) crée un levier d'autoconsommation couplable aux CEE.</p>
                         </div>
                     </div>
 
                     <h2 className="font-heading text-3xl text-primary-dark mt-10 mb-4">Comment maximiser vos primes CEE P6 ?</h2>
                     <p className="font-sans text-text-light leading-relaxed mb-4">
-                        Pour tirer parti de la P6, une <strong>audit énergétique préalable</strong> est désormais quasi-indispensable pour les surfaces > 1 000 m². Il permet d'identifier les fiches standardisées avec les meilleurs retours (kWh cumac/€ investi) et de planifier un programme de travaux pluriannuel cohérent avec vos obligations Décret Tertiaire.
+                        Pour tirer parti de la P6, une <strong>audit énergétique préalable</strong> est désormais quasi-indispensable pour les surfaces &gt; 1 000 m². Il permet d'identifier les fiches standardisées avec les meilleurs retours (kWh cumac/€ investi) et de planifier un programme de travaux pluriannuel cohérent avec vos obligations Décret Tertiaire.
                     </p>
                     <p className="font-sans text-text-light leading-relaxed mb-4">
                         La stratégie recommandée par SOLAGREEN consiste à <strong>coupler systématiquement</strong> les travaux d'efficacité énergétique avec :

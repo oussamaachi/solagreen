@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Info, ChevronDown } from 'lucide-react';
 import CeeBadge from '../components/CeeBadge';
 
@@ -9,20 +8,30 @@ const Isolation = () => {
     const comp = useRef(null);
 
     useLayoutEffect(() => {
+        const details = comp.current ? comp.current.querySelectorAll('details') : [];
+        const onDetailClick = (event) => {
+            const targetDetail = event.currentTarget;
+            details.forEach((detail) => {
+                if (detail !== targetDetail) {
+                    detail.removeAttribute('open');
+                }
+            });
+        };
+
         let ctx = gsap.context(() => {
             gsap.from('.dashboard', { y: 60, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.2 });
 
             // Simple accordion behavior
-            const details = document.querySelectorAll('details');
-            details.forEach((targetDetail) => {
-                targetDetail.addEventListener('click', (e) => {
-                    details.forEach((detail) => {
-                        if (detail !== targetDetail) detail.removeAttribute('open');
-                    });
-                });
+            details.forEach((detail) => {
+                detail.addEventListener('click', onDetailClick);
             });
         }, comp);
-        return () => ctx.revert();
+        return () => {
+            ctx.revert();
+            details.forEach((detail) => {
+                detail.removeEventListener('click', onDetailClick);
+            });
+        };
     }, []);
 
     return (

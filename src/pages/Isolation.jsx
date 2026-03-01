@@ -172,7 +172,7 @@ const Isolation = () => {
                                 <h4 className="font-heading text-2xl text-accent mb-2">Simulation Interactive SVG Bientôt Disponible</h4>
                                 <p className="font-sans text-white/80 text-sm">Cliquez sur un bâtiment tertiaire pour visualiser l'impact CEE P6 par zone d'isolation.</p>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1541888086925-9204cd1ebce3?q=80&w=800&auto=format&fit=crop" alt="Construction" className="w-full h-full object-cover filter grayscale" />
+                            <img src="/isolation.png" alt="Construction" className="w-full h-full object-cover filter grayscale" />
                         </div>
                     </div>
                 </div>

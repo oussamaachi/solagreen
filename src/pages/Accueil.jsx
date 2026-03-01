@@ -61,7 +61,7 @@ const Accueil = () => {
                 {/* Unsplash Image: solar panels rooftop modern building */}
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=2072&auto=format&fit=crop"
+                        src="/hero_pv.png"
                         alt="Toiture solaire tertiaire"
                         className="w-full h-full object-cover"
                     />
@@ -150,7 +150,7 @@ const Accueil = () => {
                         <Link to="/solutions" className="solution-card group block relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-accent/30">
                             <div className="h-48 overflow-hidden relative">
                                 <div className="absolute inset-0 bg-primary-dark/20 group-hover:bg-transparent transition-colors z-10"></div>
-                                <img src="https://images.unsplash.com/photo-1592833159057-6cb5d8b76c08?q=80&w=800&auto=format&fit=crop" alt="Photovoltaïque" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                                <img src="/pv.png" alt="Photovoltaïque" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                                 <div className="absolute top-4 right-4 z-20">
                                     <span className="bg-white/90 backdrop-blur text-primary-dark text-xs font-bold px-3 py-1 rounded-full border border-white/50">Particuliers / Tertiaire</span>
                                 </div>
@@ -168,7 +168,7 @@ const Accueil = () => {
                         <Link to="/solutions" className="solution-card group block relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-accent/30">
                             <div className="h-48 overflow-hidden relative">
                                 <div className="absolute inset-0 bg-primary-dark/20 group-hover:bg-transparent transition-colors z-10"></div>
-                                <img src="https://images.unsplash.com/photo-1627522460108-215683bdc9ee?q=80&w=800&auto=format&fit=crop" alt="Pompes à chaleur" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                                <img src="/pac.png" alt="Pompes à chaleur" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                                 <div className="absolute top-4 right-4 z-20">
                                     <span className="bg-white/90 backdrop-blur text-primary-dark text-xs font-bold px-3 py-1 rounded-full border border-white/50">Particuliers / Tertiaire</span>
                                 </div>
@@ -186,7 +186,7 @@ const Accueil = () => {
                         <Link to="/isolation" className="solution-card group block relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-accent/30">
                             <div className="h-48 overflow-hidden relative">
                                 <div className="absolute inset-0 bg-primary-dark/20 group-hover:bg-transparent transition-colors z-10"></div>
-                                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop" alt="Isolation" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                                <img src="/isolation.png" alt="Isolation" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                                 <div className="absolute top-4 right-4 z-20">
                                     <span className="bg-white/90 backdrop-blur text-primary-dark text-xs font-bold px-3 py-1 rounded-full border border-white/50">Particuliers / Tertiaire</span>
                                 </div>

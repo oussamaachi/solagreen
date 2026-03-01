@@ -8,7 +8,7 @@ const Article8 = () => {
             {/* Hero */}
             <section className="relative h-[50vh] w-full flex items-end bg-primary-dark overflow-hidden">
                 <img
-                    src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=1600&auto=format&fit=crop"
+                    src="/isolation.png"
                     alt="Fonds Chaleur biomasse réseau"
                     className="absolute inset-0 w-full h-full object-cover opacity-30"
                 />

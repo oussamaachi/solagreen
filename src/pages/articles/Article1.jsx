@@ -8,7 +8,7 @@ const Article1 = () => {
             {/* Hero */}
             <section className="relative h-[50vh] w-full flex items-end bg-primary-dark overflow-hidden">
                 <img
-                    src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1600&auto=format&fit=crop"
+                    src="/audit.png"
                     alt="CEE P6"
                     className="absolute inset-0 w-full h-full object-cover opacity-30"
                 />

@@ -8,7 +8,7 @@ const Article9 = () => {
             {/* Hero */}
             <section className="relative h-[50vh] w-full flex items-end bg-primary-dark overflow-hidden">
                 <img
-                    src="https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=1600&auto=format&fit=crop"
+                    src="/cee.png"
                     alt="Audit énergétique obligatoire entreprise"
                     className="absolute inset-0 w-full h-full object-cover opacity-30"
                 />

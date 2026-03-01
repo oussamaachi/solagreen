@@ -107,7 +107,7 @@ const Solutions = () => {
 
                         <div className="w-full lg:w-1/2 relative h-[500px]">
                             <div className="absolute inset-0 bg-accent rounded-3xl transform translate-x-4 translate-y-4 opacity-20"></div>
-                            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=800&auto=format&fit=crop" alt="Panneaux Solaires Tertiaires" className="w-full h-full object-cover rounded-3xl relative z-10 shadow-xl" />
+                            <img src="/hero_pv.png" alt="Panneaux Solaires Tertiaires" className="w-full h-full object-cover rounded-3xl relative z-10 shadow-xl" />
                         </div>
                     </div>
                 </div>
@@ -167,7 +167,7 @@ const Solutions = () => {
 
                         <div className="w-full lg:w-1/2 relative h-[500px]">
                             <div className="absolute inset-0 bg-accent rounded-3xl transform -translate-x-4 translate-y-4 opacity-20"></div>
-                            <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800&auto=format&fit=crop" alt="Audit Energétique Tertiaire" className="w-full h-full object-cover rounded-3xl relative z-10 shadow-xl" />
+                            <img src="/audit.png" alt="Audit Energétique Tertiaire" className="w-full h-full object-cover rounded-3xl relative z-10 shadow-xl" />
                         </div>
                     </div>
                 </div>
@@ -228,7 +228,7 @@ const Solutions = () => {
 
                         <div className="w-full lg:w-1/2 relative h-[500px]">
                             <div className="absolute inset-0 bg-accent rounded-3xl transform translate-x-4 translate-y-4 opacity-20"></div>
-                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop" alt="HVAC System P6" className="w-full h-full object-cover rounded-3xl relative z-10 shadow-xl" />
+                            <img src="/hvac.png" alt="HVAC System P6" className="w-full h-full object-cover rounded-3xl relative z-10 shadow-xl" />
                         </div>
                     </div>
                 </div>

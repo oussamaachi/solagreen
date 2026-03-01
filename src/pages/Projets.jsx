@@ -15,7 +15,7 @@ const Projets = () => {
             fiches: "BAT-EN-109",
             prime: "18 500 €",
             year: "2024",
-            image: "https://images.unsplash.com/photo-1592833159057-6cb5d8b76c08?q=80&w=800&auto=format&fit=crop"
+            image: "/pv.png"
         },
         {
             id: 2,
@@ -25,7 +25,7 @@ const Projets = () => {
             fiches: "BAT-TH-116",
             prime: "22 000 €",
             year: "2025",
-            image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop"
+            image: "/bacs.png"
         },
         {
             id: 3,
@@ -35,7 +35,7 @@ const Projets = () => {
             fiches: "BAT-EN-101 / BAT-EN-102",
             prime: "33 000 €",
             year: "2024",
-            image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop"
+            image: "/isolation.png"
         },
         {
             id: 4,
@@ -45,7 +45,7 @@ const Projets = () => {
             fiches: "BAT-TH-116",
             prime: "15 000 €",
             year: "2025",
-            image: "https://images.unsplash.com/photo-1541888086925-9204cd1ebce3?q=80&w=800&auto=format&fit=crop"
+            image: "/pac.png"
         },
         {
             id: 5,
@@ -55,7 +55,7 @@ const Projets = () => {
             fiches: "BAT-EN-101 / BAT-EN-103",
             prime: "28 000 €",
             year: "2025",
-            image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800&auto=format&fit=crop"
+            image: "/hvac.png"
         },
         {
             id: 6,
@@ -65,7 +65,7 @@ const Projets = () => {
             fiches: "Multi-fiches P6 complètes",
             prime: "67 000 €",
             year: "2025",
-            image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=800&auto=format&fit=crop"
+            image: "/hero_pv.png"
         }
     ];
 

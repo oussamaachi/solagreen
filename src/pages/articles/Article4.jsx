@@ -8,7 +8,7 @@ const Article4 = () => {
             {/* Hero */}
             <section className="relative h-[50vh] w-full flex items-end bg-primary-dark overflow-hidden">
                 <img
-                    src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1600&auto=format&fit=crop"
+                    src="/bacs.png"
                     alt="Pompe à chaleur tertiaire"
                     className="absolute inset-0 w-full h-full object-cover opacity-30"
                 />

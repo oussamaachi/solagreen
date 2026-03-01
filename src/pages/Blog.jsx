@@ -16,7 +16,7 @@ const Blog = () => {
             desc: "Décret n°2025-1048 du 30 octobre 2025 : la P6 est en vigueur depuis le 1er janvier 2026. L'enveloppe annuelle explose. Quelles sont les nouvelles conditions d'éligibilité pour les bâtiments tertiaires ?",
             date: "Janvier 2026",
             readTime: "4 min",
-            image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop",
+            image: "/cee.png",
             vedette: true
         },
         {
@@ -27,7 +27,7 @@ const Blog = () => {
             desc: "Arrêté du 23 février 2026. La fiche fétiche du tertiaire disparaît. Retour sur les fiches alternatives actives comme la BAT-EQ-111 ou le couplage GTB pour sauver vos financements.",
             date: "Février 2026",
             readTime: "3 min",
-            image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop",
+            image: "/hero_pv.png",
             vedette: false
         },
         {
@@ -38,7 +38,7 @@ const Blog = () => {
             desc: "Analyse des fiches BAT-EN-101 (Top 1), BAT-EN-102 et BAT-EN-103 révisées en janvier 2025. Comment le TRI minimum de 3 ans modifie la donne et comment optimiser vos primes.",
             date: "Février 2026",
             readTime: "5 min",
-            image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop",
+            image: "/audit.png",
             vedette: false
         },
         {
@@ -49,7 +49,7 @@ const Blog = () => {
             desc: "La BAT-TH-113 est abrogée en 2026. Décryptage des nouvelles fiches PAC (air/eau, eau/eau) et de l'avènement très attendu de la géothermie tertiaire via la BAT-TH-162.",
             date: "Janvier 2026",
             readTime: "4 min",
-            image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop",
+            image: "/hvac.png",
             vedette: false
         },
         {
@@ -60,7 +60,7 @@ const Blog = () => {
             desc: "Échéance OPERAT du 30 septembre 2026. Comment déduire les travaux financés par CEE de votre bilan énergétique et répondre simultanément au Décret BACS obligatoire > 290 kW.",
             date: "Février 2026",
             readTime: "6 min",
-            image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop",
+            image: "/pv.png",
             vedette: false
         },
         {
@@ -71,7 +71,7 @@ const Blog = () => {
             desc: "Loi Climat, solarisation obligatoire sur parkings > 400 places dès juillet 2026, ombrières. Pourquoi le couplage CEE (BAT-EN-109) et l'autoconsommation sont le duo financier gagnant.",
             date: "Mars 2026",
             readTime: "4 min",
-            image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=800&auto=format&fit=crop",
+            image: "/hvac.png",
             vedette: false
         },
         {
@@ -82,7 +82,7 @@ const Blog = () => {
             desc: "Obligatoire par le Décret BACS pour les systèmes CVC > 290 kW, la GTB est aussi valorisée par la fiche CEE BAT-TH-116. Primes jusqu'à 40 €/m², économies de 20 à 30% sur la facture CVC.",
             date: "Janvier 2026",
             readTime: "5 min",
-            image: "https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=800&auto=format&fit=crop",
+            image: "/pv.png",
             vedette: false
         },
         {
@@ -93,7 +93,7 @@ const Blog = () => {
             desc: "Budget record de l'ADEME pour la chaleur renouvelable. Biomasse, géothermie, solaire thermique : qui peut en bénéficier et comment cumuler avec les CEE P6 pour des taux de subvention jusqu'à 60% ?",
             date: "Mars 2026",
             readTime: "4 min",
-            image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=800&auto=format&fit=crop",
+            image: "/hero_pv.png",
             vedette: false
         },
         {
@@ -104,7 +104,7 @@ const Blog = () => {
             desc: "La directive EED révisée, transposée en droit français en décembre 2024, élargit l'obligation d'audit énergétique. Seuils, contenu réglementaire, sanctions et articulation avec OPERAT et les CEE.",
             date: "Janvier 2026",
             readTime: "5 min",
-            image: "https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=800&auto=format&fit=crop",
+            image: "/pac.png",
             vedette: false
         },
         {
@@ -115,7 +115,7 @@ const Blog = () => {
             desc: "La Loi LOM et la Loi Climat imposent des bornes de recharge dans les parkings d'entreprise. Tout savoir sur les seuils, les aides ADVENIR (jusqu'à 2 100 €/borne), la fiche CEE P6 et le smart charging.",
             date: "Février 2026",
             readTime: "5 min",
-            image: "https://images.unsplash.com/photo-1518005068251-37900150dfca?q=80&w=800&auto=format&fit=crop",
+            image: "/pac.png",
             vedette: false
         }
     ];

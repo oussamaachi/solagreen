@@ -8,7 +8,7 @@ const Article10 = () => {
             {/* Hero */}
             <section className="relative h-[50vh] w-full flex items-end bg-primary-dark overflow-hidden">
                 <img
-                    src="https://images.unsplash.com/photo-1518005068251-37900150dfca?q=80&w=1600&auto=format&fit=crop"
+                    src="/cee.png"
                     alt="Recharge véhicules électriques IRVE tertiaire"
                     className="absolute inset-0 w-full h-full object-cover opacity-30"
                 />

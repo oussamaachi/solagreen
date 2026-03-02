@@ -72,6 +72,10 @@ const Isolation = () => {
                             <span>Isolation plancher (BAT-EN-103)</span>
                             <span className="font-bold">~5 000 €</span>
                         </div>
+                        <div className="flex justify-between items-end border-b border-primary-dark/10 border-dashed pb-2 hover:bg-white/10 p-2 rounded transition-colors">
+                            <span>Isolation des Toitures-Terrasses (BAT-EN-107)</span>
+                            <span className="font-bold">~6 000 €</span>
+                        </div>
                         <div className="flex justify-between items-end border-b border-primary-dark/10 border-dashed pb-2 hover:bg-white/10 p-2 rounded transition-colors text-primary-dark/70">
                             <span>Système GTB additionnel conseillé (BAT-TH-116)</span>
                             <span className="font-bold">~8 000 €</span>
@@ -80,16 +84,16 @@ const Isolation = () => {
                         <div className="bg-primary-dark text-accent p-6 rounded-2xl mt-8">
                             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                                 <span className="text-xl uppercase font-bold tracking-wider text-white">Prime CEE totale estimée</span>
-                                <span className="text-4xl font-bold bg-accent text-primary-dark px-4 py-2 rounded-xl">~33 000 €</span>
+                                <span className="text-4xl font-bold bg-accent text-primary-dark px-4 py-2 rounded-xl">~39 000 €</span>
                             </div>
                             <div className="h-px bg-white/20 w-full my-4"></div>
                             <div className="flex justify-between text-white/70">
                                 <span>Investissement initial total</span>
-                                <span>~100 000 €</span>
+                                <span>~110 000 €</span>
                             </div>
                             <div className="flex justify-between text-white">
                                 <span className="font-bold">Reste à charge réel après CEE</span>
-                                <span className="font-bold">~67 000 € (33% CEE)</span>
+                                <span className="font-bold">~71 000 € (35% CEE)</span>
                             </div>
                         </div>
 
@@ -158,6 +162,11 @@ const Isolation = () => {
                             <div className="flex flex-col sm:flex-row items-baseline gap-2 pb-3 border-b border-gray-300 border-dashed">
                                 <span className="font-bold text-primary-dark bg-white px-2 py-1 rounded w-32 text-center border border-gray-200">BAT-EN-104</span>
                                 <span className="flex-1 font-sans">Remplacement menuiseries vitrées</span>
+                                <span className="text-accent-dim font-bold mt-2 sm:mt-0 text-right w-full sm:w-auto">Active P6</span>
+                            </div>
+                            <div className="flex flex-col sm:flex-row items-baseline gap-2 pb-3 border-b border-gray-300 border-dashed">
+                                <span className="font-bold text-primary-dark bg-white px-2 py-1 rounded w-32 text-center border border-gray-200">BAT-EN-107</span>
+                                <span className="flex-1 font-sans">Isolation des Toitures-Terrasses</span>
                                 <span className="text-accent-dim font-bold mt-2 sm:mt-0 text-right w-full sm:w-auto">Active P6</span>
                             </div>
                             <div className="flex flex-col sm:flex-row items-baseline gap-2 pb-3 border-b border-gray-300 border-dashed">
@@ -238,6 +247,29 @@ const Isolation = () => {
                         </summary>
                         <div className="p-6 pt-0 border-t border-gray-100 text-text-light font-sans mt-2">
                             <p>L'isolation du plancher bas limite les déperditions vers les espaces non chauffés (garages, caves, vides sanitaires). Opération très technique sujette à de fréquents contrôles P6, nécessitant notre expertise stricte.</p>
+                        </div>
+                    </details>
+
+                    <details className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden group">
+                        <summary className="p-6 font-heading text-2xl text-primary-dark cursor-pointer flex justify-between items-center group-hover:bg-gray-50 transition-colors list-none">
+                            <div className="flex items-center gap-4">
+                                <span>🏢 Toitures-Terrasses</span>
+                                <span className="font-mono text-xs font-bold px-2 py-1 bg-gray-100 rounded text-gray-500">BAT-EN-107</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <CeeBadge />
+                                <ChevronDown className="group-open:rotate-180 transition-transform text-primary-dark" />
+                            </div>
+                        </summary>
+                        <div className="p-6 pt-0 border-t border-gray-100 text-text-light font-sans mt-2">
+                            <p className="mb-4">La fiche BAT-EN-107 couvre la mise en place d'un doublage isolant extérieur sur toiture-terrasse ou couverture de pente inférieure à 5%, dans les bâtiments tertiaires existants. Durée de vie conventionnelle : 30 ans.</p>
+                            <ul className="list-disc pl-5 space-y-2">
+                                <li>Isolation par l'extérieur sous étanchéité (toiture chaude).</li>
+                                <li>Isolation inversée (isolant au-dessus de l'étanchéité).</li>
+                                <li>Résistance thermique minimale R ≥ 4,5 m².K/W (isolant existant non comptabilisé).</li>
+                                <li>Réalisation obligatoire par un professionnel RGE qualifié.</li>
+                                <li>Applicable aux bâtiments tertiaires à usage professionnel.</li>
+                            </ul>
                         </div>
                     </details>
                 </div>

@@ -77,7 +77,7 @@ const Accueil = () => {
                             <span className="hero-title-1 font-heading text-white text-5xl md:text-6xl lg:text-[3.5rem] leading-none tracking-wide">
                                 Produisez votre propre énergie,
                             </span>
-                            <span className="hero-title-2 font-serif italic text-accent text-6xl md:text-8xl lg:text-[7rem] leading-tight">
+                            <span className="hero-title-2 font-heading text-accent text-6xl md:text-8xl lg:text-[7rem] leading-tight">
                                 optez pour le solaire.
                             </span>
                         </h1>

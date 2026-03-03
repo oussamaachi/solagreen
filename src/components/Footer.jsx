@@ -16,7 +16,7 @@ const Footer = () => {
                             <img src="/logo.svg" alt="SOLAGREEN" className="h-10 brightness-0 invert" />
                         </Link>
                         <p className="font-serif italic text-accent text-xl mt-2 leading-tight">
-                            "L'efficacité énergétique, financée par les CEE."
+                            "L’autonomie énergétique au service de l’écologie"
                         </p>
                         <p className="font-mono text-sm text-gray-400 mt-4">
                             SIREN : 825 395 726

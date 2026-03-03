@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { Leaf } from 'lucide-react';
+import { prefersReducedMotion } from '../utils/motion';
 
 const Projets = () => {
     const comp = useRef(null);
@@ -70,7 +71,10 @@ const Projets = () => {
     ];
 
     useLayoutEffect(() => {
+        const reduceMotion = prefersReducedMotion();
+
         let ctx = gsap.context(() => {
+            if (reduceMotion) return;
             gsap.from('.project-card', {
                 y: 60,
                 opacity: 0,
@@ -103,7 +107,7 @@ const Projets = () => {
                         <div key={p.id} className="project-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col h-full transform hover:-translate-y-2">
                             <div className="h-56 overflow-hidden relative">
                                 <div className="absolute inset-0 bg-primary-dark/30 group-hover:bg-primary-dark/10 transition-colors z-10"></div>
-                                <img src={p.image} alt={p.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                                <img src={p.image} alt={p.title} loading="lazy" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                                 <div className="absolute top-4 left-4 z-20 font-mono text-xs font-bold bg-primary-dark/80 backdrop-blur text-white px-3 py-1 rounded">
                                     {p.year}
                                 </div>

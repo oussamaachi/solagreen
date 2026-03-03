@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ChevronRight, Calculator, RefreshCw, AlertTriangle, ShieldAlert } from 'lucide-react';
+import { prefersReducedMotion } from '../utils/motion';
 
 const CEE = () => {
     const comp = useRef(null);
@@ -20,7 +21,10 @@ const CEE = () => {
 
     // --- Animation Setup ---
     useLayoutEffect(() => {
+        const reduceMotion = prefersReducedMotion();
+
         let ctx = gsap.context(() => {
+            if (reduceMotion) return;
             gsap.from('.anim-up', {
                 y: 50,
                 opacity: 0,
@@ -56,6 +60,10 @@ const CEE = () => {
 
     // --- Calculator Logic ---
     const handleCalculate = () => {
+        if (isCalculating || !travauxType || !zone || !secteur) {
+            return;
+        }
+
         setIsCalculating(true);
 
         if (calcTimeoutRef.current) {
@@ -77,6 +85,10 @@ const CEE = () => {
             };
 
             const ratios = calculCEE[travauxType];
+            if (!ratios) {
+                setIsCalculating(false);
+                return;
+            }
 
             let primeRaw = facture * ratios.primeCEEratio * (surface / 1000); // simplified formula
 
@@ -105,11 +117,29 @@ const CEE = () => {
     };
 
     const resetCalculator = () => {
+        if (isCalculating) return;
         setStep(1);
         setTravauxType('');
         setZone('');
         setSecteur('');
         setResults(null);
+    };
+
+    const canGoNext = (currentStep) => {
+        if (isCalculating) return false;
+        if (currentStep === 1) return Boolean(travauxType);
+        if (currentStep === 4) return Boolean(zone);
+        return true;
+    };
+
+    const goNextStep = () => {
+        if (!canGoNext(step)) return;
+        setStep((prev) => Math.min(prev + 1, 6));
+    };
+
+    const goPrevStep = () => {
+        if (isCalculating) return;
+        setStep((prev) => Math.max(prev - 1, 1));
     };
 
     return (
@@ -301,7 +331,7 @@ const CEE = () => {
                         ))}
                     </div>
 
-                    <div className="min-h-[350px]">
+                    <div className="min-h-[350px]" aria-busy={isCalculating}>
                         {/* Step 1 */}
                         {step === 1 && (
                             <div className="space-y-6">
@@ -315,7 +345,7 @@ const CEE = () => {
                                         { id: 'gtb', label: '🏢 Pilotage GTB/BACS', cls: travauxType === 'gtb' ? 'bg-primary-dark text-white' : 'bg-white text-primary-dark' },
                                         { id: 'multi', label: '🔄 Projet Multitravaux', cls: travauxType === 'multi' ? 'bg-accent text-primary-dark border border-accent' : 'bg-white text-primary-dark' }
                                     ].map(t => (
-                                        <button key={t.id} onClick={() => setTravauxType(t.id)} className={`p-4 rounded-xl border border-gray-200 font-bold font-sans transition-all hover:-translate-y-1 ${t.cls}`}>
+                                        <button key={t.id} type="button" onClick={() => setTravauxType(t.id)} className={`p-4 rounded-xl border border-gray-200 font-bold font-sans transition-all hover:-translate-y-1 ${t.cls}`}>
                                             {t.label}
                                         </button>
                                     ))}
@@ -376,7 +406,7 @@ const CEE = () => {
                                         { id: 'H2', label: 'Zone H2 — Centre/Ouest' },
                                         { id: 'H3', label: 'Zone H3 — Méditerranée' }
                                     ].map(z => (
-                                        <button key={z.id} onClick={() => setZone(z.id)} className={`p-4 rounded-xl border font-bold font-sans transition-all hover:-translate-y-1 flex flex-col items-center gap-2 ${zone === z.id ? 'bg-primary-dark text-white border-primary-dark' : 'bg-white text-primary-dark border-gray-200'}`}>
+                                        <button key={z.id} type="button" onClick={() => setZone(z.id)} className={`p-4 rounded-xl border font-bold font-sans transition-all hover:-translate-y-1 flex flex-col items-center gap-2 ${zone === z.id ? 'bg-primary-dark text-white border-primary-dark' : 'bg-white text-primary-dark border-gray-200'}`}>
                                             <span className="text-xl">{z.id}</span>
                                             <span className="text-sm font-normal">{z.label}</span>
                                         </button>
@@ -391,7 +421,7 @@ const CEE = () => {
                                 <h3 className="font-heading text-2xl text-primary-dark mb-6">Étape 5 — Secteur d'activité</h3>
                                 <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
                                     {['Bureaux', 'Commerce', 'Hôtellerie', 'Santé / Ehpad', 'Industrie Légère', 'Logistique'].map(s => (
-                                        <button key={s} onClick={() => setSecteur(s)} className={`p-4 rounded-xl border font-bold font-sans transition-all hover:-translate-y-1 ${secteur === s ? 'bg-primary-dark text-white border-primary-dark' : 'bg-white text-primary-dark border-gray-200'}`}>
+                                        <button key={s} type="button" onClick={() => setSecteur(s)} className={`p-4 rounded-xl border font-bold font-sans transition-all hover:-translate-y-1 ${secteur === s ? 'bg-primary-dark text-white border-primary-dark' : 'bg-white text-primary-dark border-gray-200'}`}>
                                             {s}
                                         </button>
                                     ))}
@@ -446,7 +476,7 @@ const CEE = () => {
 
                                         <div className="mt-8 text-center bg-white/10 p-4 rounded-xl">
                                             <p className="font-sans text-sm text-gray-300 italic mb-4">
-                                                ⚠️ Ces estimations sont indicatives, générées par notre algorithme de dimensionnement P6. Un audit sur site est obligatoire pour figer la prime contractuellement.
+                                                ⚠️ Estimation indicative basée sur les barèmes CEE P6 de référence au 2 mars 2026. Un audit sur site et une validation documentaire restent obligatoires pour figer la prime contractuellement.
                                             </p>
                                             <Link to="/contact" className="inline-block px-8 py-3 bg-accent text-primary-dark font-bold font-sans rounded-xl hover:scale-[1.05] transition-transform">
                                                 SOLAGREEN monte votre dossier gratuitement
@@ -463,8 +493,10 @@ const CEE = () => {
                     <div className="mt-8 flex justify-between items-center border-t border-gray-200 pt-6">
                         {step > 1 && step < 6 && (
                             <button
-                                onClick={() => setStep(step - 1)}
+                                type="button"
+                                onClick={goPrevStep}
                                 className="font-bold text-gray-500 hover:text-primary-dark font-sans px-4 py-2"
+                                disabled={isCalculating}
                             >
                                 Retour
                             </button>
@@ -472,6 +504,7 @@ const CEE = () => {
 
                         {step === 6 && !isCalculating && (
                             <button
+                                type="button"
                                 onClick={resetCalculator}
                                 className="font-bold text-gray-500 hover:text-primary-dark font-sans px-4 py-2 flex items-center gap-2"
                             >
@@ -481,8 +514,9 @@ const CEE = () => {
 
                         {step < 5 && (
                             <button
-                                onClick={() => setStep(step + 1)}
-                                disabled={(step === 1 && !travauxType) || (step === 4 && !zone)}
+                                type="button"
+                                onClick={goNextStep}
+                                disabled={!canGoNext(step)}
                                 className="ml-auto flex items-center gap-2 bg-primary-dark text-white font-bold font-sans px-8 py-3 rounded-xl disabled:opacity-50 transition-colors"
                             >
                                 Suivant <ChevronRight size={18} />
@@ -491,8 +525,9 @@ const CEE = () => {
 
                         {step === 5 && (
                             <button
+                                type="button"
                                 onClick={handleCalculate}
-                                disabled={!secteur}
+                                disabled={!secteur || isCalculating}
                                 className="ml-auto flex items-center gap-2 bg-accent text-primary-dark font-bold font-sans px-8 py-3 rounded-xl disabled:opacity-50 transition-transform hover:scale-[1.03]"
                             >
                                 <Calculator size={20} /> Lancer le Calcul <ChevronRight size={18} />

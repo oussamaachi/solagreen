@@ -24,7 +24,7 @@ dirs.forEach(dir => {
         let content = fs.readFileSync(p, 'utf8');
         let changed = false;
 
-        content = content.replace(/https:\/\/images\.unsplash\.com[^\"\'\`]+/g, () => {
+        content = content.replace(/https:\/\/images\.unsplash\.com[^"'`]+/g, () => {
             changed = true;
             return images[Math.floor(Math.random() * images.length)];
         });

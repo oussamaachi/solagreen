@@ -50,8 +50,7 @@ const Footer = () => {
                         </p>
                         <Link
                             to="/contact"
-                            className="mt-2 inline-flex justify-center items-center px-6 py-3 rounded-xl bg-accent text-primary-dark font-bold transform transition-transform hover:scale-[1.03]"
-                            style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}
+                            className="mt-2 inline-flex justify-center items-center px-6 py-3 rounded-xl bg-accent text-primary-dark font-bold transform transition-transform hover:scale-[1.03] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
                         >
                             Estimer vos CEE gratuitement
                         </Link>

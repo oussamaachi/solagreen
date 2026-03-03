@@ -2,12 +2,17 @@ import React, { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ArrowRight, Zap, Calculator, BarChart3, Sun, Building2, TrendingUp } from 'lucide-react';
+import { prefersReducedMotion } from '../utils/motion';
 
 const Accueil = () => {
     const comp = useRef(null);
 
     useLayoutEffect(() => {
+        const reduceMotion = prefersReducedMotion();
+
         let ctx = gsap.context(() => {
+            if (reduceMotion) return;
+
             // Hero Animations
             gsap.fromTo('.hero-title-1', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 0.2 });
             gsap.fromTo('.hero-title-2', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 0.4 });
@@ -150,7 +155,7 @@ const Accueil = () => {
                         <Link to="/solutions" className="solution-card group block relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-accent/30">
                             <div className="h-48 overflow-hidden relative">
                                 <div className="absolute inset-0 bg-primary-dark/20 group-hover:bg-transparent transition-colors z-10"></div>
-                                <img src="/pv.png" alt="Photovoltaïque" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                                <img src="/pv.png" alt="Photovoltaïque" loading="lazy" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                                 <div className="absolute top-4 right-4 z-20">
                                     <span className="bg-white/90 backdrop-blur text-primary-dark text-xs font-bold px-3 py-1 rounded-full border border-white/50">Particuliers / Tertiaire</span>
                                 </div>
@@ -168,7 +173,7 @@ const Accueil = () => {
                         <Link to="/solutions" className="solution-card group block relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-accent/30">
                             <div className="h-48 overflow-hidden relative">
                                 <div className="absolute inset-0 bg-primary-dark/20 group-hover:bg-transparent transition-colors z-10"></div>
-                                <img src="/pac.png" alt="Pompes à chaleur" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                                <img src="/pac.png" alt="Pompes à chaleur" loading="lazy" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                                 <div className="absolute top-4 right-4 z-20">
                                     <span className="bg-white/90 backdrop-blur text-primary-dark text-xs font-bold px-3 py-1 rounded-full border border-white/50">Particuliers / Tertiaire</span>
                                 </div>
@@ -186,7 +191,7 @@ const Accueil = () => {
                         <Link to="/isolation" className="solution-card group block relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-accent/30">
                             <div className="h-48 overflow-hidden relative">
                                 <div className="absolute inset-0 bg-primary-dark/20 group-hover:bg-transparent transition-colors z-10"></div>
-                                <img src="/isolation.png" alt="Isolation" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                                <img src="/isolation.png" alt="Isolation" loading="lazy" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                                 <div className="absolute top-4 right-4 z-20">
                                     <span className="bg-white/90 backdrop-blur text-primary-dark text-xs font-bold px-3 py-1 rounded-full border border-white/50">Particuliers / Tertiaire</span>
                                 </div>
@@ -204,7 +209,7 @@ const Accueil = () => {
                         <Link to="/solutions" className="solution-card group block relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-accent/30">
                             <div className="h-48 overflow-hidden relative">
                                 <div className="absolute inset-0 bg-primary-dark/20 group-hover:bg-transparent transition-colors z-10"></div>
-                                <img src="/bacs.png" alt="Bureau GTB BACS" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                                <img src="/bacs.png" alt="Bureau GTB BACS" loading="lazy" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                                 <div className="absolute top-4 right-4 z-20">
                                     <span className="bg-white/90 backdrop-blur text-primary-dark text-xs font-bold px-3 py-1 rounded-full border border-white/50">Tertiaire</span>
                                 </div>
@@ -222,7 +227,7 @@ const Accueil = () => {
                         <Link to="/cee" className="solution-card group block relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-accent/30">
                             <div className="h-48 overflow-hidden relative">
                                 <div className="absolute inset-0 bg-primary-dark/20 group-hover:bg-transparent transition-colors z-10"></div>
-                                <img src="/cee.png" alt="Primes CEE Montage Dossier" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                                <img src="/cee.png" alt="Primes CEE Montage Dossier" loading="lazy" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                                 <div className="absolute top-4 right-4 z-20">
                                     <span className="bg-white/90 backdrop-blur text-primary-dark text-xs font-bold px-3 py-1 rounded-full border border-white/50">Particuliers / Tertiaire</span>
                                 </div>

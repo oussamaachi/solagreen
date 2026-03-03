@@ -3,12 +3,17 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ArrowRight, AlertTriangle, CalendarDays, CheckCircle2, Zap, Building2 } from 'lucide-react';
 import CeeBadge from '../components/CeeBadge';
+import { prefersReducedMotion } from '../utils/motion';
 
 const Solutions = () => {
     const comp = useRef(null);
 
     useLayoutEffect(() => {
+        const reduceMotion = prefersReducedMotion();
+
         let ctx = gsap.context(() => {
+            if (reduceMotion) return;
+
             gsap.from('.fade-up', {
                 scrollTrigger: {
                     trigger: '.fade-up',
@@ -107,7 +112,7 @@ const Solutions = () => {
 
                         <div className="w-full lg:w-1/2 relative h-[500px]">
                             <div className="absolute inset-0 bg-accent rounded-3xl transform translate-x-4 translate-y-4 opacity-20"></div>
-                            <img src="/hero_pv.png" alt="Panneaux Solaires Tertiaires" className="w-full h-full object-cover rounded-3xl relative z-10 shadow-xl" />
+                            <img src="/hero_pv.png" alt="Panneaux Solaires Tertiaires" loading="lazy" className="w-full h-full object-cover rounded-3xl relative z-10 shadow-xl" />
                         </div>
                     </div>
                 </div>
@@ -167,7 +172,7 @@ const Solutions = () => {
 
                         <div className="w-full lg:w-1/2 relative h-[500px]">
                             <div className="absolute inset-0 bg-accent rounded-3xl transform -translate-x-4 translate-y-4 opacity-20"></div>
-                            <img src="/audit.png" alt="Audit Energétique Tertiaire" className="w-full h-full object-cover rounded-3xl relative z-10 shadow-xl" />
+                            <img src="/audit.png" alt="Audit Energétique Tertiaire" loading="lazy" className="w-full h-full object-cover rounded-3xl relative z-10 shadow-xl" />
                         </div>
                     </div>
                 </div>
@@ -228,7 +233,7 @@ const Solutions = () => {
 
                         <div className="w-full lg:w-1/2 relative h-[500px]">
                             <div className="absolute inset-0 bg-accent rounded-3xl transform translate-x-4 translate-y-4 opacity-20"></div>
-                            <img src="/hvac.png" alt="HVAC System P6" className="w-full h-full object-cover rounded-3xl relative z-10 shadow-xl" />
+                            <img src="/hvac.png" alt="HVAC System P6" loading="lazy" className="w-full h-full object-cover rounded-3xl relative z-10 shadow-xl" />
                         </div>
                     </div>
                 </div>
@@ -247,6 +252,12 @@ const Solutions = () => {
                             <div className="text-gray-400 font-sans text-sm">Obligation d'équiper les bâtiments &gt; 290 kW d'une GTB.</div>
                         </div>
                         <div className="relative pl-8">
+                            <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-primary border-2 border-gray-500"></div>
+                            <div className="text-gray-400 font-bold mb-1">30 sept. 2025</div>
+                            <div className="text-white font-sans font-bold text-lg mb-1">Déclaration OPERAT</div>
+                            <div className="text-gray-400 font-sans text-sm">Saisie des données de consommation 2024.</div>
+                        </div>
+                        <div className="relative pl-8">
                             <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-accent text-primary-dark flex items-center justify-center text-[10px] font-bold shadow-[0_0_10px_#B3CA03]">★</div>
                             <div className="text-accent font-bold mb-1">1er jan. 2026</div>
                             <div className="text-white font-sans font-bold text-lg mb-1">CEE 6e période P6</div>
@@ -257,12 +268,6 @@ const Solutions = () => {
                             <div className="text-red-400 font-bold mb-1">24 fév. 2026</div>
                             <div className="text-white font-sans font-bold text-lg mb-1">Fin LED BAT-EQ-127</div>
                             <div className="text-gray-400 font-sans text-sm">Suppression historique de la fiche d'éclairage majeure.</div>
-                        </div>
-                        <div className="relative pl-8">
-                            <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-primary border-2 border-gray-500"></div>
-                            <div className="text-gray-400 font-bold mb-1">30 sept. 2025</div>
-                            <div className="text-white font-sans font-bold text-lg mb-1">Déclaration OPERAT</div>
-                            <div className="text-gray-400 font-sans text-sm">Saisie des données de consommation 2024.</div>
                         </div>
                         <div className="relative pl-8 pb-4">
                             <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-primary border-2 border-gray-500"></div>

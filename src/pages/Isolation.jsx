@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ArrowRight, Info, ChevronDown } from 'lucide-react';
 import CeeBadge from '../components/CeeBadge';
+import { prefersReducedMotion } from '../utils/motion';
 
 const Isolation = () => {
     const comp = useRef(null);
 
     useLayoutEffect(() => {
+        const reduceMotion = prefersReducedMotion();
         const details = comp.current ? comp.current.querySelectorAll('details') : [];
         const onDetailClick = (event) => {
             const targetDetail = event.currentTarget;
@@ -19,7 +21,9 @@ const Isolation = () => {
         };
 
         let ctx = gsap.context(() => {
-            gsap.from('.dashboard', { y: 60, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.2 });
+            if (!reduceMotion) {
+                gsap.from('.dashboard', { y: 60, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.2 });
+            }
 
             // Simple accordion behavior
             details.forEach((detail) => {
@@ -181,7 +185,7 @@ const Isolation = () => {
                                 <h4 className="font-heading text-2xl text-accent mb-2">Simulation Interactive SVG Bientôt Disponible</h4>
                                 <p className="font-sans text-white/80 text-sm">Cliquez sur un bâtiment tertiaire pour visualiser l'impact CEE P6 par zone d'isolation.</p>
                             </div>
-                            <img src="/isolation.png" alt="Construction" className="w-full h-full object-cover filter grayscale" />
+                            <img src="/isolation.png" alt="Construction" loading="lazy" className="w-full h-full object-cover filter grayscale" />
                         </div>
                     </div>
                 </div>

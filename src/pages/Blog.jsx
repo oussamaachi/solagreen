@@ -1,11 +1,16 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ArrowRight, Clock, CalendarDays } from 'lucide-react';
 import CeeBadge from '../components/CeeBadge';
+import { prefersReducedMotion } from '../utils/motion';
 
 const Blog = () => {
     const comp = useRef(null);
+    const [newsletter, setNewsletter] = useState({ email: '', consent: false, website: '' });
+    const [newsletterErrors, setNewsletterErrors] = useState({});
+    const [newsletterState, setNewsletterState] = useState('idle');
+    const [newsletterMessage, setNewsletterMessage] = useState('');
 
     const articles = [
         {
@@ -124,7 +129,9 @@ const Blog = () => {
     const others = articles.filter(a => !a.vedette);
 
     useLayoutEffect(() => {
+        const reduceMotion = prefersReducedMotion();
         let ctx = gsap.context(() => {
+            if (reduceMotion) return;
             gsap.fromTo('.article-card',
                 { y: 40, opacity: 0 },
                 { y: 0, opacity: 1, duration: 0.8, stagger: 0.12, ease: 'power3.out' }
@@ -132,6 +139,97 @@ const Blog = () => {
         }, comp);
         return () => ctx.revert();
     }, []);
+
+    const updateNewsletterField = (event) => {
+        const { name, value, type, checked } = event.target;
+        const nextValue = type === 'checkbox' ? checked : value;
+        setNewsletter((prev) => ({ ...prev, [name]: nextValue }));
+
+        setNewsletterErrors((prev) => {
+            if (!prev[name]) return prev;
+            const next = { ...prev };
+            delete next[name];
+            return next;
+        });
+
+        if (newsletterState !== 'idle') {
+            setNewsletterState('idle');
+            setNewsletterMessage('');
+        }
+    };
+
+    const validateNewsletter = () => {
+        const errors = {};
+        const email = newsletter.email.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+            errors.email = 'Veuillez saisir une adresse email valide.';
+        }
+        if (!newsletter.consent) {
+            errors.consent = "Vous devez accepter de recevoir nos alertes réglementaires.";
+        }
+        return errors;
+    };
+
+    const handleNewsletterSubmit = async (event) => {
+        event.preventDefault();
+        const errors = validateNewsletter();
+        if (Object.keys(errors).length > 0) {
+            setNewsletterErrors(errors);
+            setNewsletterState('error');
+            setNewsletterMessage('Merci de corriger les champs signalés.');
+            return;
+        }
+
+        setNewsletterErrors({});
+        setNewsletterState('loading');
+        setNewsletterMessage('');
+
+        try {
+            const controller = new AbortController();
+            const timeoutId = window.setTimeout(() => controller.abort(), 10000);
+
+            const response = await fetch('/api/newsletter', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: newsletter.email.trim(),
+                    consent: newsletter.consent,
+                    website: newsletter.website,
+                }),
+                signal: controller.signal,
+            });
+
+            window.clearTimeout(timeoutId);
+            const responseData = await response.json().catch(() => ({}));
+
+            if (response.status === 202 && responseData.ok) {
+                setNewsletterState('success');
+                setNewsletterMessage("Inscription confirmée. Vous recevrez nos prochaines alertes.");
+                setNewsletter({ email: '', consent: false, website: '' });
+                return;
+            }
+
+            if (response.status === 400 && responseData.fieldErrors) {
+                setNewsletterErrors(responseData.fieldErrors);
+                setNewsletterState('error');
+                setNewsletterMessage('Certains champs sont invalides.');
+                return;
+            }
+
+            if (response.status === 429) {
+                setNewsletterState('error');
+                setNewsletterMessage('Trop de tentatives. Merci de réessayer dans quelques minutes.');
+                return;
+            }
+
+            throw new Error('unexpected_response');
+        } catch {
+            setNewsletterState('error');
+            setNewsletterMessage("Service temporairement indisponible. Vérifiez votre connexion et réessayez.");
+        }
+    };
 
     return (
         <div ref={comp} className="w-full bg-bg pb-24">
@@ -155,7 +253,7 @@ const Blog = () => {
                     <div className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col md:flex-row group article-card">
                         <div className="w-full md:w-1/2 relative h-64 md:h-auto overflow-hidden">
                             <div className="absolute inset-0 bg-primary-dark/20 group-hover:bg-primary-dark/10 transition-colors z-10 pointer-events-none"></div>
-                            <img src={vedette.image} alt={vedette.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                            <img src={vedette.image} alt={vedette.title} loading="lazy" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                             <div className="absolute top-4 left-4 z-20">
                                 <CeeBadge />
                             </div>
@@ -186,7 +284,7 @@ const Blog = () => {
                             <div className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group article-card transform hover:-translate-y-2 h-full">
                                 <div className="h-48 relative overflow-hidden">
                                     <div className="absolute inset-0 bg-primary-dark/20 group-hover:bg-primary-dark/10 transition-colors z-10 pointer-events-none"></div>
-                                    <img src={a.image} alt={a.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                                    <img src={a.image} alt={a.title} loading="lazy" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                                 </div>
                                 <div className="p-6 md:p-8 flex flex-col flex-1">
                                     <div className="flex items-center gap-4 text-[10px] font-mono font-bold text-gray-500 mb-4 uppercase tracking-widest">
@@ -215,10 +313,70 @@ const Blog = () => {
                     <p className="font-heading text-2xl md:text-3xl text-white relative z-10 max-w-2xl mx-auto leading-relaxed">
                         "Recevez chaque mois nos alertes réglementaires CEE — P6, nouvelles fiches, arrêtés."
                     </p>
-                    <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center relative z-10 max-w-md mx-auto">
-                        <input type="email" placeholder="Votre email professionnel" className="bg-white/10 border border-white/20 text-white placeholder:text-gray-400 px-6 py-3 rounded-xl focus:outline-none focus:border-accent w-full" />
-                        <button className="bg-accent text-primary-dark font-bold px-8 py-3 rounded-xl whitespace-nowrap hover:scale-[1.03] transition-transform shadow-lg">S'inscrire</button>
-                    </div>
+                    <form className="mt-8 relative z-10 max-w-md mx-auto" noValidate onSubmit={handleNewsletterSubmit}>
+                        <label htmlFor="newsletter-email" className="sr-only">Email professionnel</label>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <input
+                                id="newsletter-email"
+                                name="email"
+                                type="email"
+                                value={newsletter.email}
+                                onChange={updateNewsletterField}
+                                placeholder="Votre email professionnel"
+                                className="bg-white/10 border border-white/20 text-white placeholder:text-gray-400 px-6 py-3 rounded-xl focus:outline-none focus:border-accent w-full"
+                                aria-invalid={Boolean(newsletterErrors.email)}
+                                aria-describedby={newsletterErrors.email ? 'newsletter-email-error' : undefined}
+                            />
+                            <button
+                                type="submit"
+                                disabled={newsletterState === 'loading'}
+                                className="bg-accent text-primary-dark font-bold px-8 py-3 rounded-xl whitespace-nowrap hover:scale-[1.03] transition-transform shadow-lg disabled:opacity-60 disabled:hover:scale-100"
+                            >
+                                {newsletterState === 'loading' ? 'Envoi...' : "S'inscrire"}
+                            </button>
+                        </div>
+
+                        {newsletterErrors.email && <p id="newsletter-email-error" className="mt-2 text-left text-xs text-red-300">{newsletterErrors.email}</p>}
+
+                        <div className="mt-4 text-left">
+                            <label htmlFor="newsletter-consent" className="inline-flex items-center gap-2 text-xs text-white/80">
+                                <input
+                                    id="newsletter-consent"
+                                    name="consent"
+                                    type="checkbox"
+                                    checked={newsletter.consent}
+                                    onChange={updateNewsletterField}
+                                    className="h-4 w-4 rounded border-white/40 bg-white/5 text-accent focus:ring-accent"
+                                />
+                                J'accepte de recevoir les alertes réglementaires SOLAGREEN.
+                            </label>
+                            {newsletterErrors.consent && <p className="mt-2 text-xs text-red-300">{newsletterErrors.consent}</p>}
+                        </div>
+
+                        <div className="hidden" aria-hidden="true">
+                            <label htmlFor="newsletter-website">Site web</label>
+                            <input
+                                id="newsletter-website"
+                                name="website"
+                                type="text"
+                                value={newsletter.website}
+                                onChange={updateNewsletterField}
+                                tabIndex="-1"
+                                autoComplete="off"
+                            />
+                        </div>
+
+                        {newsletterState === 'success' && (
+                            <p role="status" className="mt-4 rounded-lg border border-green-300/30 bg-green-400/15 px-4 py-3 text-sm text-green-100">
+                                {newsletterMessage}
+                            </p>
+                        )}
+                        {newsletterState === 'error' && newsletterMessage && (
+                            <p role="alert" className="mt-4 rounded-lg border border-red-300/30 bg-red-400/15 px-4 py-3 text-sm text-red-100">
+                                {newsletterMessage}
+                            </p>
+                        )}
+                    </form>
                 </div>
             </section>
         </div>

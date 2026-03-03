@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [solutionsOpen, setSolutionsOpen] = useState(false);
+    const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
+    const [desktopSolutionsOpen, setDesktopSolutionsOpen] = useState(false);
+    const desktopSolutionsRef = useRef(null);
 
     const closeMenus = () => {
         setMobileMenuOpen(false);
-        setSolutionsOpen(false);
+        setMobileSolutionsOpen(false);
+        setDesktopSolutionsOpen(false);
     };
 
     useEffect(() => {
@@ -42,6 +45,36 @@ const Navbar = () => {
         };
     }, [mobileMenuOpen]);
 
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (!desktopSolutionsRef.current) return;
+            if (!desktopSolutionsRef.current.contains(event.target)) {
+                setDesktopSolutionsOpen(false);
+            }
+        };
+
+        window.addEventListener('mousedown', handleOutsideClick);
+        return () => window.removeEventListener('mousedown', handleOutsideClick);
+    }, []);
+
+    const handleDesktopMenuKeyDown = (event) => {
+        if (event.key === 'Escape') {
+            setDesktopSolutionsOpen(false);
+            event.currentTarget.blur();
+        }
+
+        if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
+            event.preventDefault();
+            setDesktopSolutionsOpen(true);
+        }
+    };
+
+    const handleDesktopBlur = (event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+            setDesktopSolutionsOpen(false);
+        }
+    };
+
     return (
         <>
             <header className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl transition-all duration-300 rounded-full ${scrolled ? 'bg-bg/85 backdrop-blur-xl border border-accent/30 py-3 px-6 shadow-lg' : 'bg-transparent py-4 px-6 border-transparent'}`}>
@@ -63,12 +96,30 @@ const Navbar = () => {
                         <Link to="/" onClick={closeMenus} className={`text-sm font-medium transition-colors hover:text-accent ${scrolled ? 'text-text-light' : 'text-white/80'}`}>Accueil</Link>
                         <Link to="/a-propos" onClick={closeMenus} className={`text-sm font-medium transition-colors hover:text-accent ${scrolled ? 'text-text-light' : 'text-white/80'}`}>L'Agence P6</Link>
 
-                        <div className="relative group">
-                            <button type="button" className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-accent ${scrolled ? 'text-text-light' : 'text-white/80'} py-2`}>
-                                Solutions <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
+                        <div
+                            ref={desktopSolutionsRef}
+                            className="relative"
+                            onMouseEnter={() => setDesktopSolutionsOpen(true)}
+                            onMouseLeave={() => setDesktopSolutionsOpen(false)}
+                            onBlur={handleDesktopBlur}
+                        >
+                            <button
+                                type="button"
+                                aria-haspopup="menu"
+                                aria-expanded={desktopSolutionsOpen}
+                                aria-controls="desktop-solutions-menu"
+                                className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-accent ${scrolled ? 'text-text-light' : 'text-white/80'} py-2`}
+                                onClick={() => setDesktopSolutionsOpen((prev) => !prev)}
+                                onKeyDown={handleDesktopMenuKeyDown}
+                            >
+                                Solutions <ChevronDown size={14} className={`transition-transform duration-300 ${desktopSolutionsOpen ? 'rotate-180' : ''}`} />
                             </button>
 
-                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top scale-95 group-hover:scale-100 p-2">
+                            <div
+                                id="desktop-solutions-menu"
+                                role="menu"
+                                className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 transition-all duration-300 transform origin-top p-2 ${desktopSolutionsOpen ? 'opacity-100 visible scale-100' : 'opacity-0 invisible scale-95'}`}
+                            >
                                 <Link to="/solutions" onClick={closeMenus} className="block px-4 py-3 hover:bg-bg rounded-xl transition-colors">
                                     <div className="text-primary-dark font-bold text-sm mb-1">Photovoltaïque</div>
                                     <div className="text-text-light text-xs">Indépendance énergétique</div>
@@ -132,13 +183,14 @@ const Navbar = () => {
                         <div className="flex flex-col gap-3">
                             <button
                                 type="button"
-                                onClick={() => setSolutionsOpen(!solutionsOpen)}
+                                onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
                                 className="flex items-center justify-between text-xl font-heading tracking-wide text-white w-full text-left"
+                                aria-expanded={mobileSolutionsOpen}
                             >
                                 <span>Solutions</span>
-                                <ChevronDown size={20} className={`transition-transform duration-300 ${solutionsOpen ? 'rotate-180' : ''}`} />
+                                <ChevronDown size={20} className={`transition-transform duration-300 ${mobileSolutionsOpen ? 'rotate-180' : ''}`} />
                             </button>
-                            <div className={`flex flex-col gap-4 pl-4 border-l border-white/20 overflow-hidden transition-all duration-300 ${solutionsOpen ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
+                            <div className={`flex flex-col gap-4 pl-4 border-l border-white/20 overflow-hidden transition-all duration-300 ${mobileSolutionsOpen ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
                                 <Link to="/solutions" onClick={closeMenus} className="text-white/80 font-medium">Photovoltaïque</Link>
                                 <Link to="/isolation" onClick={closeMenus} className="text-white/80 font-medium">Isolation</Link>
                                 <div className="flex flex-col gap-2">

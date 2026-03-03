@@ -1,11 +1,15 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { prefersReducedMotion } from '../utils/motion';
 
 const APropos = () => {
     const comp = useRef(null);
 
     useLayoutEffect(() => {
+        const reduceMotion = prefersReducedMotion();
+
         let ctx = gsap.context(() => {
+            if (reduceMotion) return;
             gsap.from('.fade-up', { y: 50, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.2 });
         }, comp);
         return () => ctx.revert();

@@ -136,6 +136,39 @@ const Accueil = () => {
                 </div>
             </section>
 
+            {/* 2b. Partenaires / Certifications */}
+            <section className="bg-bg py-16 w-full border-b border-gray-200">
+                <div className="max-w-7xl mx-auto px-6">
+                    <p className="text-center text-text-light font-sans text-sm uppercase tracking-widest mb-10">
+                        Nos certifications & partenaires
+                    </p>
+                    <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20 lg:gap-28">
+                        <div className="group flex items-center justify-center transition-transform hover:scale-105 w-28 md:w-32">
+                            <img
+                                src="/logos/rge.png"
+                                alt="RGE – Reconnu Garant de l'Environnement"
+                                className="w-full object-contain opacity-80 group-hover:opacity-100 transition-all duration-300"
+                                style={{ mixBlendMode: 'multiply' }}
+                            />
+                        </div>
+                        <div className="group flex items-center justify-center transition-transform hover:scale-105 w-32 md:w-40">
+                            <img
+                                src="/logos/totalenergies.png"
+                                alt="TotalEnergies"
+                                className="w-full object-contain opacity-80 group-hover:opacity-100 transition-all duration-300"
+                            />
+                        </div>
+                        <div className="group flex items-center justify-center transition-transform hover:scale-105 w-36 md:w-44">
+                            <img
+                                src="/logos/ila26.png"
+                                alt="ILA26 Énergie"
+                                className="w-full object-contain opacity-80 group-hover:opacity-100 transition-all duration-300"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* 3. Nos Solutions */}
             <section className="bg-bg py-24 w-full">
                 <div className="max-w-7xl mx-auto px-6">

@@ -45,12 +45,19 @@ const Projets = () => {
         },
         {
             id: 4,
-            title: "Carport Solaire",
-            tag: "Structure & Solaire",
+            title: "Installation Solaire Toiture",
+            tag: "Solaire Résidentiel",
             images: [
                 "/realisations/rea_14.jpg",
                 "/realisations/rea_15.jpg",
-                "/realisations/rea_16.jpg",
+                "/realisations/rea_16.jpg"
+            ]
+        },
+        {
+            id: 5,
+            title: "Carport Solaire",
+            tag: "Structure & Solaire",
+            images: [
                 "/realisations/rea_17.jpg",
                 "/realisations/rea_18.jpg",
                 "/realisations/rea_19.jpg",
@@ -60,7 +67,7 @@ const Projets = () => {
             ]
         },
         {
-            id: 5,
+            id: 6,
             title: "Rénovation Bâtiment Tertiaire",
             tag: "Bâtiment Commercial",
             images: [
@@ -74,7 +81,7 @@ const Projets = () => {
             ]
         },
         {
-            id: 6,
+            id: 7,
             title: "Toiture Terrasse Industrielle",
             tag: "Tertiaire & Industriel",
             images: [
@@ -108,7 +115,7 @@ const Projets = () => {
             ]
         },
         {
-            id: 7,
+            id: 8,
             title: "Centre Logistique ID Market",
             tag: "Isolation & Toiture",
             images: [
@@ -124,10 +131,36 @@ const Projets = () => {
                  "/realisations/rea_40.jpeg",
                  "/realisations/rea_41.jpeg",
                  "/realisations/rea_42.jpeg",
-                 "/realisations/rea_43.jpeg"
-            ]
-        }
-    ];
+                  "/realisations/rea_43.jpeg"
+             ]
+         },
+         {
+             id: 9,
+             title: "Toiture Terrasse Belberaud",
+             tag: "Toiture Terrasse",
+             images: [
+                 "/realisations/rea_70.jpeg",
+                 "/realisations/rea_71.jpeg",
+                 "/realisations/rea_72.jpeg",
+                 "/realisations/rea_73.jpeg",
+                 "/realisations/rea_74.jpeg"
+             ]
+         },
+         {
+             id: 10,
+             title: "Toiture Terrasse Blois",
+             tag: "Toiture Terrasse",
+             images: [
+                 "/realisations/rea_75.jpeg",
+                 "/realisations/rea_76.jpeg",
+                 "/realisations/rea_77.jpeg",
+                 "/realisations/rea_78.jpeg",
+                 "/realisations/rea_79.jpeg",
+                 "/realisations/rea_80.jpeg",
+                 "/realisations/rea_81.jpeg"
+             ]
+         }
+     ];
 
     const openLightbox = (projectIndex, imageIndex = 0) => {
         setLightbox({ open: true, projectIndex, imageIndex });
